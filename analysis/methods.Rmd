@@ -1,0 +1,221 @@
+---
+title: "Methods"
+output:
+  workflowr::wflow_html:
+    toc: true
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+---
+# Materials and Methods
+
+The area of interest for this project is the western coast of Oregon (area west of the Cascade Mountains). This area is also known in LANDFIRE as Map Zone 2.
+
+All maps were created in ArcGIS Pro. All charts were plotted in R/R-Studio.
+
+
+
+<br>
+
+```{r libraries, message=FALSE, warning=FALSE, include=FALSE}
+
+library(sf)
+library(terra)
+library(tidyverse)
+library(tmap)
+library(janitor)
+library(DT)
+library(scales)
+
+```
+
+
+```{r read shapefile, message=FALSE, warning=FALSE, include=FALSE}
+#  read shape
+shp <- st_read("data/mz2.shp") %>% 
+  st_transform(crs = 5070) %>%
+  st_union() %>%
+  st_sf()
+```
+
+```{r locator map, message=FALSE, warning=FALSE, echo=FALSE}
+
+
+# toggle tmap mode to interactive viewing
+tmap_mode("view")
+
+# create a quick interactive map
+quickmap <- qtm(shp, 
+                borders = "darkgreen", 
+                fill = NULL, 
+                check.and.fix = TRUE, 
+                basemaps = 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}',
+                title = 'LANDFIRE Map Zone 2',)
+
+quickmap
+
+
+
+```
+
+Figure 2. Study Area Map
+
+Below we describe the data inputs and GIS operations.  
+
+## LANDFIRE supplied data inputs
+
+[LANDFIRE](https://landfire.gov/) is a large US federal program that delivers dozens of datasets and hundreds of models for the US including Alaska, Hawaii and the insular areas such as Puerto Rico.
+
+We relied on these 3 inputs, all derived from LANDFIRE products:
+
+1)  Map of ecosystem footprints 
+2)  Estimated 'reference' amounts of open and closed succession classes: Biophysical Settings models
+3)  Map of current succession classes: Succession Class data
+
+\*NOTE: LANDFIRE data is delivered as geotifs with 30M pixel size.
+
+### Ecosystem footprints
+
+We relied on LANDFIRE's ["Biophysical Settings" (BpS)](https://landfire.gov/bps.php) to obtain 'potential ecosystem footprints'. This dataset is a modeled depiction of the dominant vegetation systems prior to European colonization. It was developed with many abiotic inputs such as soils, surface geology and many climate inputs. 
+
+Each BpS, such as a "western hemlock douglas fir forest" is accompanied by a description that includes information on its succession classes and a model which captures historical disturbances and estimated amounts of succession classes.
+
+We used the ["Clip Raster"](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/clip.htm) tool in ArcGIS pro to extract the area of interest from a broader extent of the raster data.  
+
+![Figure 3. Map Zone 2 Ecosystem Footprint](assets/historicOldGrowth.jpg){width=50%}
+
+### Reference succession class amounts
+
+For each BpS, we needed to know how much late-open and late-closed each would have had historically. To do this, we referenced the BpS descriptions which have those estimates, and descriptions of the succession classes (visit [this site](https://landfirereview.org/search.php) to search for BpS documents). For actual data work we used a modified version of the ["Reference Condition" table](https://landfire.gov/zip/LANDFIRE_CONUS_Reference_Condition_Table_August_2020.zip) (see modified data table below).
+
+Below is a screenshot of a BpS model, showing boxes, which represent the succession classes, or structural stages of an ecosystem; lines which represent succession and disturbances. What you don't see here are the quantitative disturbance inputs from the model, or the outputs which include percent of each succession class that would have occurred historically (visit the [LANDFIRE Vegetation Modeling site](https://thenatureconservancy.github.io/landfiremodels/) to learn more about the modeling process).
+
+Since succession classes moved around the landscape LANDFIRE does not map where they were historically, only delivering percentages. 
+
+![Figure 4. BpS Model](assets/bpsmodel.PNG)
+
+### Current Succession Classes
+
+Finally, we used the LANDFIRE [succession class dataset](https://landfire.gov/sclass.php) to get an idea of how much of each succession class occurs per BpS on the landscape today. Each pixel within a BpS is labled A through E for the "reference" states, and also includes labels for other categories such as agriculture and urban. We first used the ["clip raster"](https://pro.arcgis.com/en/pro-app/latest/tool-reference/data-management/clip.htm) tool in ArcGIS pro to extract the area of interest from a broader extent of the raster data. We then did a 'combine' using the [Combine Tool](https://pro.arcgis.com/en/pro-app/latest/tool-reference/spatial-analyst/combine.htm) in ArcGIS pro of the BpS and succession class data to get a dataframe with pixel counts of each unique combination of BpS and succesion class to allow for estimating of the amounts of current succession classes per BpS.  We then used the [Join Field Tool](https://pro.arcgis.com/en/pro-app/3.1/tool-reference/data-management/join-field.htm) to join the 'BPS_NAME', 'BPS_MODEL' attributes from the BpS dataset, and the 'Label' attribute from the Succession Class dataset  (see output data example below).
+
+The rules for defining the structural characteristics of each succession class are in the [BpS descriptions](https://www.landfire.gov/bps-models.php), and are essentially combinations of height, cover and type. In a fictitious example, if there was a pixel mapped as western hemlock douglas fir with coniferious trees 25-50 M tall and with canopy cover 80-100% that might be labled as class E, late-closed.
+
+![Figure 5. Current Percentages of Late-Successional Forest](assets/currentOldGrowth.jpg){width=50%}
+
+##  Wrangling data post-GIS
+
+Once we have clipped, combined and attributed spatial data in ArcGIS pro, we need to do a little data wrangling in R to further prep the spatial data for mapping and to make some charts.  In summary we:
+
+1. Read the combined data attribute table and supporting data tables from LANDFIRE into R (all located in 'data' directory in Git repo)
+    * BpS-Succession Class Combined attribute table (named "bps_scl_cmbn.csv")
+    * Succession Class Descriptions (named "scls_descriptions.csv")
+    * Reference condition percentages (named "ref_con_long.csv")
+    * Map Zone 2 Biophysical Settings (named "bps_mz2.csv")
+2. Build and join in succession class 'descriptions' (e.g., 'Late1-Closed')
+3. Do a little cleaning, and make a new 'join_field'
+4. Calculate reference and current acres per succession class per BpS
+
+Click the "Show" button to see code.  Final data table can be explored below.  
+<br>
+
+
+```{r wrangling data, message=FALSE, warning=FALSE}
+
+## read in raw data and sclass descriptions
+
+raw_bps_scls <- read.csv("data/bps_scl_cmbn.csv")
+
+sclass_descriptions <- read.csv("data/scls_descriptions.csv")
+
+reference_percents <- read.csv("data/ref_con_long.csv")
+
+bps_mz2 <- read.csv("data/bps_mz2.csv")
+
+##  clean and prep raw combined data
+
+clean_bps_scls_cmbn <- raw_bps_scls %>%
+  clean_names() %>%
+  dplyr::select(-c(4, 5)) %>%
+  unite("join_field", bps_model,label, sep = "_", remove = FALSE )
+
+## clean and prep sclass descriptions
+
+sclass_descriptions_clean <- sclass_descriptions %>%
+  dplyr::select(-c(4)) %>% # remove column
+  rename("model_code" = "StratumID",
+         "scls_label" = "ClassLabelID",
+         "state_class_id" = "StateClassID" ) %>% # rename columns
+  unite("join_field", model_code:scls_label, sep = "_", remove = FALSE ) %>%
+  separate(state_class_id, into = c("age_category", "canopy_category"), sep = ":", remove = FALSE) 
+
+
+## clean and prep reference percents
+
+unique_sclass_labels_ref <- unique(reference_percents$refLabel)
+#print(unique_sclass_labels_ref)
+
+unique_sclass_lables_cmbn <- unique(clean_bps_scls_cmbn$label)
+#print(unique_sclass_lables_cmbn)
+# does not have barren/sparse and there are differences, e.g., Urban-Developed between this and sclass label
+# will assume Barren/Sparse, NoData and Snow/Ice is minimal; will change "Developed" to "Urban" in reference df cleaning code 
+
+clean_ref_percents <- reference_percents %>%
+  clean_names() %>%
+  mutate(across('ref_label', str_replace, 'Developed', 'Urban')) %>%
+  mutate(across('model_label', str_replace, 'Developed', 'Urban')) %>%
+  rename("join_field" = "model_label",
+         "bps_name" = "bp_s_name" )
+
+## need to winnow this df to only the bps model codes in MZ 2
+
+clean_ref_percents_mz2 <- clean_ref_percents %>%
+  filter(model_code %in% bps_mz2$BPS_MODEL)
+
+
+## create 'final' dataframe with reference and current sclass percents, acres and labels
+
+## first ref con and sclass descriptions
+final_df <- left_join(clean_ref_percents_mz2, sclass_descriptions_clean) 
+
+
+# looks OK, now full join to add reference percents then clean a bit
+
+final_df2 <- full_join(final_df, clean_bps_scls_cmbn) %>%
+  dplyr::select(-c(6, 10, 13, 14)) %>%
+  rename( "cur_scls_count" = "count")
+
+# now for the math: need count/acres per bps, cur sclass percents and differences
+
+final_df3 <- final_df2 %>%
+  group_by(bps_name) %>%
+  mutate(bps_count = sum(cur_scls_count, na.rm = TRUE)) %>%
+  ungroup() %>%
+  mutate(bps_acres = bps_count*0.2223945,
+         ref_scls_acres = bps_acres*(ref_percent/100),
+         cur_scls_acres = cur_scls_count*0.2223945,
+         cur_percent = (cur_scls_acres/bps_acres)*100) %>%
+  mutate(across(12:15, round, 0))
+
+# save to csv to explore in Excel, and reorder columns
+
+write.csv(final_df3, file = "data/final_df.csv", row.names=FALSE)
+
+
+
+
+```
+
+
+The resulting final data table was then joined back to the combined BpS-Succession Class data in ArcGIS Pro for mapping. 
+
+
+### Final Data Table
+
+```{r final data table, message=FALSE, warning=FALSE}
+datatable(final_df3)
+
+```
+
+
+
+

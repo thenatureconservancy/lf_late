@@ -1,0 +1,28 @@
+---
+title: "Investigating spatial distributions of late-successional forest in western Oregon"
+author: Mary Kelly and Randy Swaty
+date: October 15, 2023
+site: workflowr::wflow_site
+output:
+  workflowr::wflow_html:
+    toc: true
+    code_folding: hide
+editor_options:
+  chunk_output_type: console
+---
+## Introduction
+Late-successional forests can host relatively high biodiversity, can be important carbon sinks (e.g., [DellaSala et al., 2022](https://www.frontiersin.org/articles/10.3389/ffgc.2022.979528/full)) and are a focus of the 2022 ["Executive Order on Strengthening the Nation’s Forests, Communities, and Local Economies"](https://www.whitehouse.gov/briefing-room/presidential-actions/2022/04/22/executive-order-on-strengthening-the-nations-forests-communities-and-local-economies/).  They can also be very difficult to define ([Gray et al., 2023](https://www.sciencedirect.com/science/article/pii/S0378112723005844)).
+
+Often late-successional forests are thought of to be closed canoppy, but this may not always be the case. Disturbance-dependent ecosystems may have ‘open-canopy’ late succession habitat. For example, riparian area ecosystems may naturally have frequent ice scouring and/or flooding that removes some, but not all trees (e.g., [Estes et al., 2023](https://bioone.org/journals/natural-areas-journal/volume-43/issue-3/2162-4399-43.3.148/Riverscour-Ecosystems-of-Eastern-Unglaciated-North-America-A-Review/10.3375/2162-4399-43.3.148.pdf)). Fire adapted ecosystems may have frequent surface fires that keep the canopy relatively open while preserving older and taller trees (e.g., [Mugnani et al., 2019](https://www.mdpi.com/1999-4907/10/5/389/pdf)) .  If we only consider ‘closed-canopy’ late succession habitat, we may underestimate those areas, and more importantly we may 1) miss areas for conservation and 2) miss trends of loss or gain. Further, due to changes in disturbance regimes, for example dam creation and fire-suppression, these potential open-canopy late succession habitats may need restoration.
+
+
+![Figure 1. Opal Creek Old Growth with Young Trees, Willamette National Forest. Forest Service Pacific Northwest Region is marked with Public Domain Mark 1.0. To view the terms, visit https://creativecommons.org/publicdomain/mark/1.0/?ref=openverse.](assets/opal_creek_og.jpg){width=70%}
+
+## Research Questions
+Our guiding questions for this project are:
+
+1) What are the ecosystems for the area of interest?
+2) How much late succession would there have been historically vs. today?
+3) What happens when we split late-succession into open and closed canopy types?
+
+

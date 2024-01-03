@@ -1,0 +1,25 @@
+name: myproject
+output_dir: ../docs
+navbar:
+  title: Investigating spatial distributions of late-successional forest in western Oregon
+  left:
+  - text: Home
+    href: index.html
+  - text: Methods
+    href: methods.html
+  - text: Results
+    href: results.html
+  - text: Discussion
+    href: discussion.html
+  - text: About
+    href: about.html
+  right:
+  - icon: fab fa-github
+    text: Source code
+    href: https://github.com/markelly4/myproject
+output:
+  workflowr::wflow_html:
+    toc: yes
+    toc_float: yes
+    theme: flatly
+    highlight: textmate
