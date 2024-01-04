@@ -10,17 +10,15 @@ editor_options:
 
 ## Caveats
 
-Caveats to be aware of:
-
-1) We are just looking at trends over time.
-2) Mapping/modeling techniques of pre-settlement are different from the satellite maps of today.
-3) Differentiation between open/closed canopy classes were determined in workshops led by local experts.
+1) This analysis was done to explore broad trends over time and should be used as a launch point for localized, in-depth analyses
+2) Mapping/modeling techniques of pre-settlement are different from the satellite maps of today <<THIS LEAVES ME WONDERING WHAT YOU MEAN...NEED TO SAY MORE HERE - TO LEARN MORE ABOUT MAPPING MODELING TECHNIQUES OF PRE-SETTLEMENT, CLICK HERE - DO WE EVEN KNOW WHAT PRE-SETTLEMENT MODELING MEANS?>>
+3) Differentiation between open/closed canopy classes were determined in workshops led by local experts. <<DOCUMENTATION ON THEIR CRITERIA CAN BE FOUND HERE>>
 
 ## Discussion
 
 ### Summary and patterns
 
-Overall, late-successional forest in this part of Oregon has declined from pre-European conditions to present-day. Across the area, we saw an average loss of 60% of LS stands, with nearly all ecosystems losing open, and coastal ecosystems losing closed late successional. However, some areas have experienced a gain in LS forest, perhaps due to fire suppression.
+Overall, late-successional forests have declined from pre-European conditions to present-day. Our preliminary analysis suggests that on average, late-successional forests have declined 60%, with nearly all ecosystems losing open-canopy, and coastal ecosystems losing closed-canopy, late successional. However, some areas have experienced a gain in late-successional forests, perhaps due to fire suppression.
 
 ### Our contributions
 

@@ -13,7 +13,7 @@
 
 <meta name="date" content="2023-10-15" />
 
-<title>Investigating spatial distributions of late-successional forest in western Oregon</title>
+<title>Spatial distributions of late-successional forest in western Oregon</title>
 
 <script src="site_libs/header-attrs-2.25/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -377,8 +377,8 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Investigating spatial distributions of
-late-successional forest in western Oregon</h1>
+<h1 class="title toc-ignore">Spatial distributions of late-successional
+forest in western Oregon</h1>
 <h4 class="author">Mary Kelly and Randy Swaty</h4>
 <h4 class="date">October 15, 2023</h4>
 
@@ -388,7 +388,7 @@ late-successional forest in western Oregon</h1>
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -399,8 +399,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -413,9 +413,9 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>lf_late/</code> <span
@@ -427,7 +427,7 @@ title="This is the local directory in which the code in this file was executed."
 This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
 analysis was created with <a
   href="https://github.com/workflowr/workflowr">workflowr</a> (version
-1.7.0). The <em>Checks</em> tab describes the reproducibility checks
+1.7.1). The <em>Checks</em> tab describes the reproducibility checks
 that were applied when the results were created. The <em>Past
 versions</em> tab lists the development history.
 </p>
@@ -438,33 +438,36 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomthenatureconservancylflatetreedf1b594c09cf9b610d1f87cd9f44fbd612eea889targetblankdf1b594a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomthenatureconservancylflatetreef6ad1a5324a4e1fd51717a56ef21bc13576d5a89targetblankf6ad1a5a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/thenatureconservancy/lf_late/tree/df1b594c09cf9b610d1f87cd9f44fbd612eea889" target="_blank">df1b594</a>
+<a href="https://github.com/thenatureconservancy/lf_late/tree/f6ad1a5324a4e1fd51717a56ef21bc13576d5a89" target="_blank">f6ad1a5</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomthenatureconservancylflatetreedf1b594c09cf9b610d1f87cd9f44fbd612eea889targetblankdf1b594a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomthenatureconservancylflatetreef6ad1a5324a4e1fd51717a56ef21bc13576d5a89targetblankf6ad1a5a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -474,7 +477,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/thenatureconservancy/lf_late/tree/df1b594c09cf9b610d1f87cd9f44fbd612eea889" target="_blank">df1b594</a>.
+<a href="https://github.com/thenatureconservancy/lf_late/tree/f6ad1a5324a4e1fd51717a56ef21bc13576d5a89" target="_blank">f6ad1a5</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -489,8 +492,10 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+
+Unstaged changes:
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -537,6 +542,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/thenatureconservancy/lf_late/f6ad1a5324a4e1fd51717a56ef21bc13576d5a89/docs/index.html" target="_blank">f6ad1a5</a>
+</td>
+<td>
+rswaty
+</td>
+<td>
+2024-01-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -576,54 +598,72 @@ initial commit
 </div>
 </div>
 </div>
-<div id="introduction" class="section level2">
-<h2>Introduction</h2>
-<p>Late-successional forests can host relatively high biodiversity, can
-be important carbon sinks (e.g., <a
-href="https://www.frontiersin.org/articles/10.3389/ffgc.2022.979528/full">DellaSala
-et al., 2022</a>) and are a focus of the 2022 <a
+<div id="introduction-why-late-successional-forests"
+class="section level2">
+<h2>Introduction: Why Late-Successional Forests?</h2>
+<p>Late-successional forests, also referred to as o&amp;d-g%owth or
+mature forests, play a crucial role in maintaining biodiversity and
+supporting ecosystem health. Late-successional forests can be found at
+various elevations, from lowlands to montane and subalpine regions.</p>
+<p>The forests we describe in this short web application are
+concentrated in INSERT LOCATION, on the Western slopes of the Cascade
+and INSERT mountains. The 2022 <a
 href="https://www.whitehouse.gov/briefing-room/presidential-actions/2022/04/22/executive-order-on-strengthening-the-nations-forests-communities-and-local-economies/">“Executive
 Order on Strengthening the Nation’s Forests, Communities, and Local
-Economies”</a>. They can also be very difficult to define (<a
+Economies”</a> highlighted the ecosystem resilience of these forests and
+noted their ecological significance to maintaining biodiversity (INSERT
+CITATION), sequestering carbon <a
+href="https://www.frontiersin.org/articles/10.3389/ffgc.2022.979528/full">DellaSala
+et al., 2022</a>), and regulating a healthy, functioning water cycle
+(INSERT CITATION)</p>
+<div id="closed-vs.-open-canopy" class="section level3">
+<h3>Closed vs. Open Canopy</h3>
+<p>Late-successional forests can also be difficult to define, from an
+ecological point of view. (<a
 href="https://www.sciencedirect.com/science/article/pii/S0378112723005844">Gray
-et al., 2023</a>).</p>
-<p>Often late-successional forests are thought of to be closed canoppy,
-but this may not always be the case. Disturbance-dependent ecosystems
-may have ‘open-canopy’ late succession habitat. For example, riparian
-area ecosystems may naturally have frequent ice scouring and/or flooding
-that removes some, but not all trees (e.g., <a
+et al., 2023</a>). For example they are often characterized as “closed
+canopy”, but this may not always be the case as disturbance-dependent
+ecosystems may have “open-canopy”, late-succession habitat. Further,
+riparian ecosystems may naturally have frequent ice scouring and/or
+flooding that removes some, but not all trees (e.g., <a
 href="https://bioone.org/journals/natural-areas-journal/volume-43/issue-3/2162-4399-43.3.148/Riverscour-Ecosystems-of-Eastern-Unglaciated-North-America-A-Review/10.3375/2162-4399-43.3.148.pdf">Estes
-et al., 2023</a>). Fire adapted ecosystems may have frequent surface
+et al., 2023</a>). &lt;&lt;are you saying late-successional, riparian
+ecosystems? if so, let’s add “late-successional” in front of
+riparian&gt;&gt;</p>
+<p>Late-successional, fire adapted ecosystems can have frequent surface
 fires that keep the canopy relatively open while preserving older and
 taller trees (e.g., <a
 href="https://www.mdpi.com/1999-4907/10/5/389/pdf">Mugnani et al.,
-2019</a>) . If we only consider ‘closed-canopy’ late succession habitat,
-we may underestimate those areas, and more importantly we may 1) miss
-areas for conservation and 2) miss trends of loss or gain. Further, due
-to changes in disturbance regimes, for example dam creation and
-fire-suppression, these potential open-canopy late succession habitats
-may need restoration.</p>
+2019</a>) that are characteristic of this forest type. Broadening the
+definition of late-successional forests to include both closed and open
+canopy ecosystems provides a more accurate estimate of the remaining
+late-successional forests, aids in the identification of key areas for
+conservation and helps identify positive or negative trends.</p>
+<p>Further, due to changes in disturbance regimes, for example dam
+creation and fire-suppression, these potential open-canopy late
+succession habitats may need restoration. &lt;&lt;I don’t get this,
+needs to be rewritten&gt;&gt;</p>
 <div class="float">
-<img src="assets/opal_creek_og.jpg" style="width:70.0%"
-alt="Figure 1. Opal Creek Old Growth with Young Trees, Willamette National Forest. Forest Service Pacific Northwest Region is marked with Public Domain Mark 1.0. To view the terms, visit https://creativecommons.org/publicdomain/mark/1.0/?ref=openverse." />
+<img src="assets/opal_creek_og.jpg" style="width:90.0%"
+alt="Figure 1. Opal Creek Old Growth with Young Trees, Willamette National Forest, U.S. Forest Service Pacific Northwest Region" />
 <div class="figcaption">Figure 1. Opal Creek Old Growth with Young
-Trees, Willamette National Forest. Forest Service Pacific Northwest
-Region is marked with Public Domain Mark 1.0. To view the terms, visit
-<a
-href="https://creativecommons.org/publicdomain/mark/1.0/?ref=openverse"
-class="uri">https://creativecommons.org/publicdomain/mark/1.0/?ref=openverse</a>.</div>
+Trees, Willamette National Forest, U.S. Forest Service Pacific Northwest
+Region</div>
 </div>
 </div>
-<div id="research-questions" class="section level2">
-<h2>Research Questions</h2>
-<p>Our guiding questions for this project are:</p>
+<div id="objectives" class="section level3">
+<h3>Objectives</h3>
 <ol style="list-style-type: decimal">
-<li>What are the ecosystems for the area of interest?</li>
-<li>How much late succession would there have been historically
-vs. today?</li>
-<li>What happens when we split late-succession into open and closed
-canopy types?</li>
+<li>Using LANDFIRE vegetation products, we identify the major ecosystems
+for the study area</li>
+<li>Using LANDFIRE’s Biophysical Settings Products, we identify the
+historical amount and distribution of late-succession forest in (INSERT
+REGION NAME) and contrast this with the remaining forest (using LANDFIRE
+data from 2023)</li>
+<li>Determine how the information above changes when we split
+late-succession into open and closed canopy types</li>
 </ol>
+</div>
 </div>
 
 

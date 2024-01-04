@@ -383,7 +383,7 @@ div.tocify {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -394,8 +394,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -408,9 +408,9 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 7
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>lf_late/</code> <span
@@ -422,7 +422,7 @@ title="This is the local directory in which the code in this file was executed."
 This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
 analysis was created with <a
   href="https://github.com/workflowr/workflowr">workflowr</a> (version
-1.7.0). The <em>Checks</em> tab describes the reproducibility checks
+1.7.1). The <em>Checks</em> tab describes the reproducibility checks
 that were applied when the results were created. The <em>Past
 versions</em> tab lists the development history.
 </p>
@@ -433,18 +433,21 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
@@ -535,15 +538,15 @@ project makes it easier to run your code on other machines.</p>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomthenatureconservancylflatetreedf1b594c09cf9b610d1f87cd9f44fbd612eea889targetblankdf1b594a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomthenatureconservancylflatetreef6ad1a5324a4e1fd51717a56ef21bc13576d5a89targetblankf6ad1a5a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/thenatureconservancy/lf_late/tree/df1b594c09cf9b610d1f87cd9f44fbd612eea889" target="_blank">df1b594</a>
+<a href="https://github.com/thenatureconservancy/lf_late/tree/f6ad1a5324a4e1fd51717a56ef21bc13576d5a89" target="_blank">f6ad1a5</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomthenatureconservancylflatetreedf1b594c09cf9b610d1f87cd9f44fbd612eea889targetblankdf1b594a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomthenatureconservancylflatetreef6ad1a5324a4e1fd51717a56ef21bc13576d5a89targetblankf6ad1a5a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -553,7 +556,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/thenatureconservancy/lf_late/tree/df1b594c09cf9b610d1f87cd9f44fbd612eea889" target="_blank">df1b594</a>.
+<a href="https://github.com/thenatureconservancy/lf_late/tree/f6ad1a5324a4e1fd51717a56ef21bc13576d5a89" target="_blank">f6ad1a5</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -568,8 +571,12 @@ were generated:
 </p>
 <pre><code>
 Ignored files:
-    Ignored:    .Rhistory
     Ignored:    .Rproj.user/
+
+Unstaged changes:
+    Modified:   analysis/index.Rmd
+    Modified:   analysis/methods.Rmd
+    Modified:   analysis/results.Rmd
 
 </code></pre>
 <p>
@@ -617,6 +624,23 @@ Message
 <tbody>
 <tr>
 <td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/thenatureconservancy/lf_late/f6ad1a5324a4e1fd51717a56ef21bc13576d5a89/docs/results.html" target="_blank">f6ad1a5</a>
+</td>
+<td>
+rswaty
+</td>
+<td>
+2024-01-03
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
 Rmd
 </td>
 <td>
@@ -661,21 +685,22 @@ initial commit
 <div id="historic-ecosystems" class="section level2">
 <h2>Historic Ecosystems</h2>
 <p>This chart represents the historical ecosystems of our area of
-interest, split out by estimated acres of the various succession classes
-pre-European Settlement. On the left axis are names of LANDFIRE’s BpSs.
-On the bottom axis are number of acres. The colors represent the age
-classes. The purple and orange areas represent late succession
-ecosystems. Late1 and Late2 don’t necessarily mean open/closed
+interest, split out by estimated acres of the various succession
+classes, pre-European Settlement. On the y axis are names of LANDFIRE’s
+BpSs and the x axis represent the number of acres. The colors represent
+the age classes; the purple and orange areas represent late-succession
+ecosystems. Note: Late1 and Late2 don’t necessarily mean open/closed
 canopy.</p>
-<p>There were 28 BpSs mapped in our area of interest. In this chart we
-excluded BpSs with footprints of less than 10,000 acres for clarity. The
-North Pacific Maritime Mesic-Wet Douglas-fir-Western Hemlock Forest was
-most dominant at ~2.4 M acres with 1.7M acres of late successional
-habitat, followed by North Pacific Maritime Dry-Mesic
-Douglas-fir-Western Hemlock Forest at ~1.8 M acres and 1.1M acres of
-late successional habitat. Roughly 60% of the area is estimated to have
-been late successional habitat historically. Again, these are the
-“reference conditions” determined by local experts.</p>
+<p>We mapped 28 BpSs within the area of interest. We excluded BpSs with
+footprints of less than 10,000 acres. Roughly 60% of the area is
+estimated to have been historically classified as late-successional
+habitat and can be considered reference conditions as determined by the
+local experts that created the BpS models for the area.</p>
+<div id="major-biophysical-settings-with-estimated-reference"
+class="section level3">
+<h3>Major Biophysical Settings with Estimated Reference</h3>
+<div id="separated-by-succession-classes" class="section level4">
+<h4>Separated by Succession Classes</h4>
 <pre class="r"><code>library(tidyverse)
 library(scales)
 
@@ -706,8 +731,8 @@ plot_acres &lt;-
   geom_bar(position = &quot;stack&quot;, stat = &quot;identity&quot;) +
   coord_flip() +
   labs(
-    title = &quot;Biophysical Settings of the area, with estimated reference acres&quot;,
-    subtitle = &quot;Split out by succession classes&quot;,
+    title = &quot;&quot;,
+    subtitle = &quot;&quot;,
     caption = &quot;Data from landfire.gov. BpSs with small footprint removed for clarity (&gt; 10k acres)&quot;,
     x = &quot;&quot;,
     y = &quot;Acres&quot;,
@@ -730,79 +755,123 @@ plot_acres &lt;-
 
 plot_acres</code></pre>
 <p><img src="figure/results.Rmd/stacked%20bps-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-no-spaces-stacked-bps-1">
+Past versions of "stacked bps-1.png"
+</button>
+</p>
+<div id="fig-no-spaces-stacked-bps-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/thenatureconservancy/lf_late/blob/df1b594c09cf9b610d1f87cd9f44fbd612eea889/docs/figure/results.Rmd/stacked bps-1.png" target="_blank">df1b594</a>
+</td>
+<td>
+Randy Swaty
+</td>
+<td>
+2024-01-03
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>&lt;&lt;I MIGHT RECOMMEND PARING DOWN THIS BPS LIST TO THE TOP 8?
+10?&gt;&gt;</p>
 <p>Figure 6. Chart representing historical ecosystems of the area of
 interest, split out by estimated acres of the various succession classes
 pre-European Settlement.</p>
 </div>
-<div id="historic-late-succesional" class="section level2">
-<h2>Historic Late-Succesional %</h2>
+</div>
+</div>
+<div id="estimated-percentages-of-historic-late-succesional"
+class="section level2">
+<h2>Estimated Percentages of <strong>Historic
+Late-Succesional</strong></h2>
 <p>This map represents the historical percentages of late-successional
-forest by ecosystem. Darker green areas indicate higher percentages of
-late-successional forest. For historical ecosystems, percent of late
-successional forest ranged from 0-100%. Most areas fell within the
-76-100% grouping. For this map, we used quantiles for the legend breaks.
-Percent late-successional forest was joined to the BpS data as an
-attribute in GIS.</p>
+forest by ecosystem. Most of the area fell within 76-100%
+late-successional class grouping which is represented by the darker
+green areas. &lt;&lt;IF POSSIBLE IT WOULD BE GREAT TO MAKE ALL THE MAPS
+LOOK SIMILAR, SEE COMMENTS ON MAPS FROM THE METHODS TAB&gt;&gt;</p>
 <div class="float">
 <img src="assets/historicOldGrowth.jpg" style="width:80.0%"
-alt="Figure 7. Map of historic percentages of late successional forest. Data mapped in ArcGIS Pro from LANDFIRE Biophysical Settings (BpS) data and BpS models." />
+alt="Figure 7. Map of historic percentages of late successional forest. We used quantiles for the legend breaks. Percent late-successional forest was joined to the BpS data as an attribute in GIS" />
 <div class="figcaption">Figure 7. Map of historic percentages of late
-successional forest. Data mapped in ArcGIS Pro from LANDFIRE Biophysical
-Settings (BpS) data and BpS models.</div>
+successional forest. We used quantiles for the legend breaks. Percent
+late-successional forest was joined to the BpS data as an attribute in
+GIS</div>
 </div>
 </div>
-<div id="current-late-succesional" class="section level2">
-<h2>Current Late-Succesional %</h2>
+<div id="estimated-percentage-of-current-late-successional"
+class="section level2">
+<h2>Estimated Percentage of <strong>Current
+Late-Successional</strong></h2>
 <p>This map represents the estimated current percentages of
-late-successional forest by ecosystem. Darker green areas indicate
-higher percentages of late-successional forest. For current ecosystems,
-percent of late successional forest ranged from 0-100%. For this map, we
-used quantiles for the legend breaks. Combination of BpS and SClass
-attributes.</p>
-<p>Currently ~15% of the area is mapped as late succession. In the PNW
-we sometimes underestimate succession class height, and so the data may
-have been undermapped.</p>
+late-successional forest by ecosystem. Currently ~15% of the area is
+mapped as late succession which is represented by the darker green
+areas. In the PNW we sometimes underestimate succession class height,
+and so the data may have been undermapped.</p>
 <div class="float">
 <img src="assets/currentOldGrowth.jpg" style="width:80.0%"
-alt="Figure 8. Map of current percentages of late successional forest. Data mapped in ArcGIS Pro from LANDFIRE Biophysical Settings (BpS) data, BpS models, and LANDFIRE Succession Classes (SClass)." />
+alt="Figure 8. Map of current percentages of late successional forest. For this map, we used quantiles for the legend breaks. Combination of BpS and SClass attributes. (SClass)." />
 <div class="figcaption">Figure 8. Map of current percentages of late
-successional forest. Data mapped in ArcGIS Pro from LANDFIRE Biophysical
-Settings (BpS) data, BpS models, and LANDFIRE Succession Classes
-(SClass).</div>
+successional forest. For this map, we used quantiles for the legend
+breaks. Combination of BpS and SClass attributes. (SClass).</div>
 </div>
 </div>
-<div id="current-late-succesional-change" class="section level2">
-<h2>Current Late-Succesional % Change</h2>
+<div id="estimated-current-late-successional-percent-change"
+class="section level2">
+<h2>Estimated <strong>Current Late-Successional Percent
+Change</strong></h2>
 <p>This map represents the percent change of late-successional forest by
 ecosystem. Darker green areas indicate an increase in the amount of LS
-forest, while brown areas indicate a loss. Percent of late successional
+forest, while brown areas indicate a loss. Percent of late-successional
 forest ranged from an 81% loss to a 75% gain. Most areas saw a loss of
-60% or more. For this map, we used jenks natural breaks for the legend
-breaks.</p>
+60% or more.</p>
 <p>Some areas in the southern portion of the study area saw a net gain
-in LS forest. This is perhaps due to a history of fire suppression in
-the area, or an increase in different vegetation types. Land ownership
-includes land managed by USFS, BLM, and private landowners.</p>
+in late-successional forest. This is perhaps due to a history of fire
+suppression in the area, or an increase in different vegetation types.
+Land ownership includes land managed by USFS, BLM, and private
+landowners.</p>
 <div class="float">
 <img src="assets/difference.jpg" style="width:80.0%"
-alt="Figure 9. Map of percent change in late successional forest. Data mapped in ArcGIS Pro from LANDFIRE Succession Classes (SClass) and Biophysical Settings (BpS)." />
+alt="Figure 9. Map of percent change in late successional forest. For this map, we used jenks natural breaks for the legend breaks." />
 <div class="figcaption">Figure 9. Map of percent change in late
-successional forest. Data mapped in ArcGIS Pro from LANDFIRE Succession
-Classes (SClass) and Biophysical Settings (BpS).</div>
+successional forest. For this map, we used jenks natural breaks for the
+legend breaks.</div>
 </div>
 </div>
-<div id="current-late-succesional-change-1" class="section level2">
-<h2>Current Late-Succesional % Change</h2>
-<p>This chart shows change in amounts of late-successional habitat by
-ecosystem, from modeled historical to mapped 2020. On the left axis are
-names of LANDFIRE’s BpS. On the bottom axis is the percent change from
-historical to present-day. The arrows/ecosystems are arranged in
-descending order from most prevalent to least (at the bottom). Yellow
+<div id="estimated-current-late-successional-percent-change-1"
+class="section level2">
+<h2>Estimated <strong>Current Late-Successional Percent
+Change</strong></h2>
+<p>This chart shows changes in amounts of late-successional habitat by
+ecosystem, from “modeled historical” to “mapped with 2020 data”. The y
+axis are the top LANDFIRE BpSs and the x axis displays the percent
+change from historical to present-day &lt;&lt;WOULDN’T SAY PRESENT DAY
+BECAUSE TIME N ALL…OR 2020??&gt;&gt;. The arrows/ecosystems are arranged
+in descending order from most prevalent to least (at the bottom). Yellow
 arrows indicate a loss, while the green ones represent a gain.</p>
 <p>Almost all ecosystems have experienced substantial loss of late
 successional classes; 3 ecosystems experienced a gain in late
-successional classes. Once again, these represent percentages of the
-whole ecosystem.</p>
+successional classes. These represent percentages of the whole
+ecosystem.</p>
 <pre class="r"><code>raw_data &lt;- read.csv(&quot;data/final_df.csv&quot;)
 
 
@@ -846,84 +915,134 @@ arrow_plot &lt;- old_growth_loss |&gt;
 
 arrow_plot</code></pre>
 <p><img src="figure/results.Rmd/late-succession%20change-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-no-spaces-late-succession-change-1">
+Past versions of "late-succession change-1.png"
+</button>
+</p>
+<div id="fig-no-spaces-late-succession-change-1" class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/thenatureconservancy/lf_late/blob/df1b594c09cf9b610d1f87cd9f44fbd612eea889/docs/figure/results.Rmd/late-succession change-1.png" target="_blank">df1b594</a>
+</td>
+<td>
+Randy Swaty
+</td>
+<td>
+2024-01-03
+</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="historic-late-successional-open-canopy" class="section level2">
-<h2>Historic Late-Successional % (open-canopy)</h2>
-<p>This map represents the percent of historic late-successional forest
-that is open canopy. Darker purple areas indicate higher amounts of open
-canopy forest. For historic open-canopy ecosystems, percent of late
-successional forest ranged from 5-68%. For this map, we used jenks
-natural breaks for the legend breaks.</p>
+</div>
+</div>
+<div id="estimated-percentage-of-historic-late-successional-open-canopy"
+class="section level2">
+<h2>Estimated Percentage of <strong>Historic Late-Successional
+(open-canopy)</strong></h2>
+<p>This map represents the percent of historic, open-canopy,
+late-successional forests. Historic, open-canopy ecosystems ranged from
+5-68% and darker purple areas indicate higher amounts of open canopy
+forest.</p>
 <div class="float">
 <img src="assets/historicOldGrowth_open.png" style="width:80.0%"
-alt="Figure 11. Map of percent of historic late successional ecosystems that are classified as open canopy." />
+alt="Figure 11. Map of percent of historic late successional ecosystems that are classified as open canopy. We used jenks natural breaks for the legend breaks." />
 <div class="figcaption">Figure 11. Map of percent of historic late
-successional ecosystems that are classified as open canopy.</div>
-</div>
-</div>
-<div id="historic-late-successional-closed-canopy"
-class="section level2">
-<h2>Historic Late-Successional % (closed-canopy)</h2>
-<p>This map represents the percent of historic late-successional forest
-that is closed canopy. Darker red areas indicate higher amounts of
-closed canopy forest. For historic closed-canopy ecosystems, percent of
-late successional forest ranged from 1-92%. For this map, we used jenks
-natural breaks for the legend breaks. Coastal areas get more rain and
-the eastern spots are drier due to rain shadow.</p>
-<div class="float">
-<img src="assets/historicOldGrowth_closed.png" style="width:80.0%"
-alt="Figure 12. Map of percent of historic late successional ecosystems that are classified as closed canopy." />
-<div class="figcaption">Figure 12. Map of percent of historic late
-successional ecosystems that are classified as closed canopy.</div>
-</div>
-</div>
-<div id="current-late-successional-open-canopy" class="section level2">
-<h2>Current Late-Successional % (open-canopy)</h2>
-<p>This map represents the percent of current late-successional forest
-that is open canopy. Darker purple areas indicate higher amounts of open
-canopy forest. For current open-canopy ecosystems, percent of late
-successional forest ranged from 1-28%. For this map, we used jenks
-natural breaks for the legend breaks. There is very little open canopy
-ecosystem remaining.</p>
-<div class="float">
-<img src="assets/currentOldGrowth_open.png" style="width:80.0%"
-alt="Figure 13. Map of percent of current late successional ecosystems that are classified as open canopy." />
-<div class="figcaption">Figure 13. Map of percent of current late
-successional ecosystems that are classified as open canopy.</div>
-</div>
-</div>
-<div id="current-late-successional-closed-canopy"
-class="section level2">
-<h2>Current Late-Successional % (closed-canopy)</h2>
-<p>This map represents the percent of current late-successional forest
-that is closed canopy. Darker red areas indicate higher amounts of
-closed canopy forest. For current closed-canopy ecosystems, percent of
-late successional forest ranged from less than 1% to 82%. For this map,
-we used jenks natural breaks for the legend breaks.</p>
-<div class="float">
-<img src="assets/currentOldGrowth_closed.png" style="width:80.0%"
-alt="Figure 14. Map of percent of current late successional ecosystems that are classified as closed canopy." />
-<div class="figcaption">Figure 14. Map of percent of current late
-successional ecosystems that are classified as closed canopy.</div>
+successional ecosystems that are classified as open canopy. We used
+jenks natural breaks for the legend breaks.</div>
 </div>
 </div>
 <div
-id="overall-change-in-late-successional-classes-closed-v.-open-canopy"
+id="estimated-percentage-of-historic-late-successional-closed-canopy"
 class="section level2">
-<h2>Overall % Change in Late Successional Classes (Closed v. Open
-Canopy)</h2>
+<h2>Estimated Percentage of <strong>Historic Late-Successional
+(closed-canopy)</strong></h2>
+<p>This map represents the percent of historic, closed-canopy,
+late-successional forest. &lt;&lt;SHOULD SAY SOMETHING LIKE ‘MOST OF THE
+FOREST FELL WITHIN THE 42-55% RANGE’ OR SOMETHING LIKE
+THAT&gt;&gt;Darker red areas indicate higher amounts of closed canopy
+forest. Coastal areas get more rain and the eastern spots are drier due
+to rain shadow.</p>
+<div class="float">
+<img src="assets/historicOldGrowth_closed.png" style="width:80.0%"
+alt="Figure 12. Map of percent of historic late successional ecosystems that are classified as closed canopy. We used jenks natural breaks for the legend breaks." />
+<div class="figcaption">Figure 12. Map of percent of historic late
+successional ecosystems that are classified as closed canopy. We used
+jenks natural breaks for the legend breaks.</div>
+</div>
+</div>
+<div id="estimated-percentage-of-current-late-successional-open-canopy"
+class="section level2">
+<h2>Estimated Percentage of <strong>Current Late-Successional
+(open-canopy)</strong></h2>
+<p>This map represents the percent of current, open canopy,
+late-successional forest. Darker purple areas indicate higher amounts of
+open canopy forest. Late-successional, open-canopy forest ranged from
+1-28% and are indicated by darker purple areas on the map. Note: there
+is very little open-canopy ecosystem remaining.</p>
+<div class="float">
+<img src="assets/currentOldGrowth_open.png" style="width:80.0%"
+alt="Figure 13. Map of percent of current late successional ecosystems that are classified as open canopy. We used jenks natural breaks for the legend breaks." />
+<div class="figcaption">Figure 13. Map of percent of current late
+successional ecosystems that are classified as open canopy. We used
+jenks natural breaks for the legend breaks.</div>
+</div>
+</div>
+<div
+id="estimated-percentage-of-current-late-successional-closed-canopy"
+class="section level2">
+<h2>Estimated Percentage of <strong>Current Late-Successional
+(closed-canopy)</strong></h2>
+<p>This map represents the percent of current, closed-canopy,
+late-successional forests. Darker red areas indicate higher amounts of
+closed-canopy forest. &lt;&lt;SHOULD THE LEGEND BREAKS BE DOUBLE
+CHECKED? I.E. LAST BREAK IS 32-84%?&gt;&gt;</p>
+<div class="float">
+<img src="assets/currentOldGrowth_closed.png" style="width:80.0%"
+alt="Figure 14. Map of percent of current late successional ecosystems that are classified as closed canopy. We used jenks natural breaks for the legend breaks." />
+<div class="figcaption">Figure 14. Map of percent of current late
+successional ecosystems that are classified as closed canopy. We used
+jenks natural breaks for the legend breaks.</div>
+</div>
+</div>
+<div id="what-is-this-title-i-accidentally-deleted-it"
+class="section level2">
+<h2>what is this title? I accidentally deleted it)</h2>
 <p>This chart shows change in amounts of late-successional open and
 closed canopy habitat by ecosystem, from modeled historical to mapped
-2020. On the left axis are names of LANDFIRE’s BpSs. On the bottom axis
-is the percent change from historical to present-day. The
-arrows/ecosystems are arranged in descending order from most prevalent
-to least (at the bottom). Yellow arrows indicate a loss, while the green
-ones represent a gain.</p>
-<p>Example interpretation: 1) North Pacific Maritime Mesic-Wet
-Douglas-fir Western Hemlock Forest saw a ~73% decrease closed canopy and
-a ~5% decrease in open canopy. 2) Mediterranean California Dry-Mesic
-Mixed Conifer Forest and Woodland saw a ~23% increase in closed canopy
-and a ~35% decrease in open canopy.</p>
+using data from 2020. The y axis are the top LANDFIRE BpSs and the x
+axis displays the percent change from historical to present-day
+&lt;&lt;WOULDN’T SAY PRESENT DAY BECAUSE TIME N ALL…OR 2020??&gt;&gt;.
+The arrows/ecosystems are arranged in descending order from most
+prevalent to least (at the bottom). Yellow arrows indicate a loss, while
+the green ones represent a gain.</p>
+<div id="example-interpretations" class="section level3">
+<h3>Example interpretations:</h3>
+<ol style="list-style-type: decimal">
+<li>North Pacific Maritime Mesic-Wet Douglas-fir Western Hemlock Forest
+experienced a ~73% decrease in closed-canopy and a ~5% decrease in
+open-canopy forest type.</li>
+<li>Mediterranean California Dry-Mesic Mixed Conifer Forest and Woodland
+experienced a ~23% increase in closed-canopy and a ~35% decrease in
+open-canopy forest type.</li>
+</ol>
 <pre class="r"><code>## old growth change split out by open/closed
 
 
@@ -982,6 +1101,44 @@ canopy_arrow_plot &lt;- old_growth_chng_canopy %&gt;%
 
 canopy_arrow_plot</code></pre>
 <p><img src="figure/results.Rmd/late-succession%20change,%20open%20and%20closed-1.png" width="864" style="display: block; margin: auto;" /></p>
+<p>
+<button type="button" class="btn btn-default btn-xs btn-workflowr btn-workflowr-fig" data-toggle="collapse" data-target="#fig-no-spaces-late-succession-change,-open-and-closed-1">
+Past versions of "late-succession change, open and closed-1.png"
+</button>
+</p>
+<div id="fig-no-spaces-late-succession-change,-open-and-closed-1"
+class="collapse">
+<div class="table-responsive">
+<table class="table table-condensed table-hover">
+<thead>
+<tr>
+<th>
+Version
+</th>
+<th>
+Author
+</th>
+<th>
+Date
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="https://github.com/thenatureconservancy/lf_late/blob/df1b594c09cf9b610d1f87cd9f44fbd612eea889/docs/figure/results.Rmd/late-succession change, open and closed-1.png" target="_blank">df1b594</a>
+</td>
+<td>
+Randy Swaty
+</td>
+<td>
+2024-01-03
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <p>Figure 15. Chart showing change in amounts of late-successional open
 and closed canopy habitat by ecosystem, from modeled historical to
 mapped 2020</p>
@@ -994,7 +1151,7 @@ Session information
 </p>
 <div id="workflowr-sessioninfo" class="collapse">
 <pre class="r"><code>sessionInfo()</code></pre>
-<pre><code>R version 4.2.2 Patched (2022-11-30 r83413 ucrt)
+<pre><code>R version 4.2.2 (2022-10-31 ucrt)
 Platform: x86_64-w64-mingw32/x64 (64-bit)
 Running under: Windows 10 x64 (build 22621)
 
@@ -1011,25 +1168,25 @@ attached base packages:
 [1] stats     graphics  grDevices utils     datasets  methods   base     
 
 other attached packages:
- [1] scales_1.2.1    lubridate_1.9.2 forcats_1.0.0   stringr_1.5.0  
- [5] dplyr_1.1.2     purrr_1.0.1     readr_2.1.4     tidyr_1.3.0    
- [9] tibble_3.2.1    ggplot2_3.4.2   tidyverse_2.0.0 workflowr_1.7.0
+ [1] scales_1.3.0    lubridate_1.9.3 forcats_1.0.0   stringr_1.5.1  
+ [5] dplyr_1.1.4     purrr_1.0.2     readr_2.1.4     tidyr_1.3.0    
+ [9] tibble_3.2.1    ggplot2_3.4.4   tidyverse_2.0.0
 
 loaded via a namespace (and not attached):
- [1] tidyselect_1.2.0  xfun_0.39         bslib_0.5.1       colorspace_2.1-0 
- [5] vctrs_0.6.4       generics_0.1.3    htmltools_0.5.5   yaml_2.3.7       
- [9] utf8_1.2.3        rlang_1.1.1       jquerylib_0.1.4   later_1.3.1      
-[13] pillar_1.9.0      glue_1.6.2        withr_2.5.1       lifecycle_1.0.3  
-[17] munsell_0.5.0     gtable_0.3.3      evaluate_0.22     labeling_0.4.2   
-[21] knitr_1.44        callr_3.7.3       tzdb_0.4.0        fastmap_1.1.1    
-[25] httpuv_1.6.11     ps_1.7.5          fansi_1.0.4       Rcpp_1.0.11      
-[29] promises_1.2.1    cachem_1.0.8      jsonlite_1.8.7    farver_2.1.1     
-[33] fs_1.6.3          hms_1.1.3         digest_0.6.33     stringi_1.7.12   
-[37] processx_3.8.2    getPass_0.2-2     rprojroot_2.0.3   grid_4.2.2       
-[41] cli_3.6.1         tools_4.2.2       magrittr_2.0.3    sass_0.4.7       
-[45] whisker_0.4.1     pkgconfig_2.0.3   timechange_0.2.0  rmarkdown_2.25   
-[49] httr_1.4.7        rstudioapi_0.15.0 R6_2.5.1          git2r_0.32.0     
-[53] compiler_4.2.2   </code></pre>
+ [1] tidyselect_1.2.0  xfun_0.41         bslib_0.6.1       colorspace_2.1-0 
+ [5] vctrs_0.6.5       generics_0.1.3    htmltools_0.5.7   yaml_2.3.8       
+ [9] utf8_1.2.4        rlang_1.1.2       jquerylib_0.1.4   later_1.3.2      
+[13] pillar_1.9.0      glue_1.6.2        withr_2.5.2       lifecycle_1.0.4  
+[17] munsell_0.5.0     gtable_0.3.4      workflowr_1.7.1   evaluate_0.23    
+[21] labeling_0.4.3    knitr_1.45        tzdb_0.4.0        fastmap_1.1.1    
+[25] httpuv_1.6.13     fansi_1.0.6       highr_0.10        Rcpp_1.0.11      
+[29] promises_1.2.1    cachem_1.0.8      jsonlite_1.8.8    farver_2.1.1     
+[33] fs_1.6.3          hms_1.1.3         digest_0.6.33     stringi_1.8.3    
+[37] rprojroot_2.0.4   grid_4.2.2        cli_3.6.2         tools_4.2.2      
+[41] magrittr_2.0.3    sass_0.4.8        whisker_0.4.1     pkgconfig_2.0.3  
+[45] timechange_0.2.0  rmarkdown_2.25    rstudioapi_0.15.0 R6_2.5.1         
+[49] git2r_0.33.0      compiler_4.2.2   </code></pre>
+</div>
 </div>
 </div>
 </div>
